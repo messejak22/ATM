@@ -3,8 +3,6 @@ public class Customer {
 
     private int AccountNumber;
     private int pin;
-    private int withdraw;
-    private int deposit;
     private int balance;
     public Customer(int AccountNumber, int pin, int balance) {
         this.AccountNumber = AccountNumber;
@@ -19,17 +17,19 @@ public class Customer {
         return AccountNumber;
     }
 
-    public int getWithdraw() {
-        return withdraw;
+    public void withdraw(int withdraw) {
+        balance -= withdraw;
     }
 
-    public int getDeposit() {
-        return deposit;
+    public void deposit(int deposit) {
+        balance += deposit;
     }
 
     public int getBalance() {
         return balance;
     }
+
+        
 
 
 

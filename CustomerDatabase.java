@@ -1,8 +1,103 @@
+import java.util.*;
+import java.io.*;
 public class CustomerDatabase {
+
+    ArrayList<Customer> list = new ArrayList<Customer>();
+    ArrayList<Integer> l;
+
+    public void addCustomer() throws IOException {
+        
+        BufferedReader r = new BufferedReader(new FileReader("C:\\Users\\jakec\\Desktop\\ATM\\ATM-\\Text.in.txt"));
+        
+        Queue<Integer> q = new LinkedList<Integer>();
+        l = new ArrayList<Integer>();
+        int temp;
+        String[] initValues;
+        int count = 0;
+        try {
+            String contentLine = r.readLine();
+            while (contentLine != null) {
+
+                initValues = contentLine.split(" ");
+
+                for (int i = 0; i < initValues.length; i++) {
+                    temp = Integer.valueOf(initValues[i]);
+                    l.add(temp);
+                }
+                contentLine = r.readLine();
+                count++;
+            }
+
+
+        } catch (IOException ioe) {
+
+            ioe.printStackTrace();
+        } finally {
+            try {
+                if (r != null) {
+                    r.close();
+                }
+            } catch (IOException ioe) {
+                System.out.println("Error");
+            }
+        }
+        for (int i = 0; i < l.size(); i++) {
+            q.add(l.get(i));
+        }
+
+        Customer c;
+        int temp1, temp2, temp3;
+        int len = count-3;
+        
+        for (int i = 0; i < q.size()+len; i++) {
+            temp1 = q.element();
+            q.remove();
+            temp2 = q.element();
+            q.remove();
+            temp3 = q.element();
+            q.remove();
+            c = new Customer(temp1, temp2, temp3);
+            list.add(c);
+        }
+
+
+        
+        
+
+
+    }
+
+
+        
     
-    Customer c1 = new Customer(1234, 4321, 100);
     
-    public Customer getC1() {
-        return c1;
+
+    public void build() {
+
+        /*
+        String temp = "";
+        for (int i = 0; i < l.size(); i++) {
+            temp += l.get(i);
+            temp+= " ";
+        }
+        String[] initValues = temp.split(" ");
+        int[] values = new int[initValues.length];
+        for (int i = 0; i < initValues.length; i++) {
+            values[i] = Integer.valueOf(initValues[i]);
+        }
+
+        for (int i = 0; i < 3; i++) {
+            Customer c = new Customer(values[i], values[i+1], values[i+2]);
+            list.add(c);
+        }
+        
+        
+        */
+        
+
+    }
+    
+    public ArrayList<Customer> getList() {
+        return list;
     }
 }

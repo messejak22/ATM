@@ -1,11 +1,11 @@
 public class Customer {
 
 
-    private int AccountNumber;
+    private int accountNum;
     private int pin;
     private int balance;
-    public Customer(int AccountNumber, int pin, int balance) {
-        this.AccountNumber = AccountNumber;
+    public Customer(int accountNum, int pin, int balance) {
+        this.accountNum = accountNum;
         this.pin = pin;
         this.balance = balance;
     }
@@ -13,8 +13,8 @@ public class Customer {
     public int getPin() {
         return pin;
     }
-    public int getAccountNumber() {
-        return AccountNumber;
+    public int getAccountNum() {
+        return accountNum;
     }
 
     public void withdraw(int withdraw) {
@@ -29,6 +29,11 @@ public class Customer {
         return balance;
     }
 
+    public String toString() {
+
+        return accountNum +  " " + " " + pin + " " +balance;
+
+    }
         
 
 

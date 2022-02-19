@@ -1,6 +1,5 @@
 public class Customer {
 
-
     private int accountNum;
     private int pin;
     private int balance;

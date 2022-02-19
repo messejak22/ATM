@@ -1,12 +1,16 @@
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 public class Main {
     
+    private static CustomerDatabase cd1;
+    private static int listSize;
     public static void main(String[] args) throws IOException {
 
         Scanner scan = new Scanner(System.in);
-        CustomerDatabase cd1 = new CustomerDatabase();
+        cd1 = new CustomerDatabase();
         cd1.addCustomer();
+        listSize = cd1.getList().size();
         int checkAccountNum;
         int k = 0;
         boolean flag = false;
@@ -37,12 +41,7 @@ public class Main {
         while (true) {
             System.out.println("Enter pin: ");
             int checkPin = scan.nextInt(); 
-            if (checkPin == cd1.getList().get(keep).getPin()) {
-                System.out.println("Correct");
-                flag2 = true;
-                break;
-            } 
-
+            if (checkPin == cd1.getList().get(keep).getPin()) { System.out.println("Correct"); flag2 = true; break; } 
             if (flag2 == false) {
                 System.out.println("Try again");
             } else {
@@ -61,6 +60,7 @@ public class Main {
                 int withdrawChoice = scan.nextInt();
                 cd1.getList().get(keep).withdraw(withdrawChoice);
                 System.out.println("New balance: " + cd1.getList().get(keep).getBalance());
+                rewrite();
                 System.out.println("Enter (1) to exit (2) to return to home: ");
                 int returnChoice = scan.nextInt(); 
                 if (returnChoice == 1) {
@@ -74,6 +74,7 @@ public class Main {
                 int depositAmount = scan.nextInt();
                 cd1.getList().get(keep).deposit(depositAmount);
                 System.out.println("New balance " + cd1.getList().get(keep).getBalance());
+                rewrite();
                 System.out.println("Enter (1) to exit (2) to return to home: ");
                 int returnChoice = scan.nextInt(); 
                 if (returnChoice == 1) {
@@ -93,11 +94,27 @@ public class Main {
                 break;
             }
     
+            
         }
  
-    
-   
         
+    }
+
+    public static void rewrite() {
+
+        try {
+
+            FileWriter f = new FileWriter("C:\\Users\\jakec\\Desktop\\ATM\\ATM-\\Text.in.txt");
+            for (int i = 0; i < listSize; i++) {
+                f.write(cd1.getList().get(i).getAccountNum() + " " + cd1.getList().get(i).getPin() + " " + cd1.getList().get(i).getBalance() + "\n");
+            }
+            
+            f.close();
+        } catch (IOException e) {
+            System.out.println("Error");
+            e.printStackTrace();
+}
         
+
     }
 }

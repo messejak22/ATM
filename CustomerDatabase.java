@@ -4,6 +4,7 @@ public class CustomerDatabase {
 
     ArrayList<Customer> list = new ArrayList<Customer>();
     ArrayList<Integer> l;
+    
 
     public void addCustomer() throws IOException {
         
@@ -11,6 +12,9 @@ public class CustomerDatabase {
         
         Queue<Integer> q = new LinkedList<Integer>();
         l = new ArrayList<Integer>();
+
+     
+
         int temp;
         String[] initValues;
         int count = 0;
@@ -60,44 +64,12 @@ public class CustomerDatabase {
             list.add(c);
         }
 
-
-        
-        
-
-
     }
 
-
         
-    
-    
-
-    public void build() {
-
-        /*
-        String temp = "";
-        for (int i = 0; i < l.size(); i++) {
-            temp += l.get(i);
-            temp+= " ";
-        }
-        String[] initValues = temp.split(" ");
-        int[] values = new int[initValues.length];
-        for (int i = 0; i < initValues.length; i++) {
-            values[i] = Integer.valueOf(initValues[i]);
-        }
-
-        for (int i = 0; i < 3; i++) {
-            Customer c = new Customer(values[i], values[i+1], values[i+2]);
-            list.add(c);
-        }
-        
-        
-        */
-        
-
-    }
     
     public ArrayList<Customer> getList() {
         return list;
     }
+  
 }

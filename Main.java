@@ -11,6 +11,9 @@ public class Main {
         cd1 = new CustomerDatabase();
         cd1.addCustomer();
         listSize = cd1.getList().size();
+
+    
+
         int checkAccountNum;
         int k = 0;
         boolean flag = false;
@@ -18,6 +21,10 @@ public class Main {
         while (true) {
             System.out.println("Enter Account number: ");
             checkAccountNum = scan.nextInt();
+
+
+
+
             for (int i = 0; i < cd1.getList().size(); i++) {
                 if (checkAccountNum == cd1.getList().get(k).getAccountNum()) {
                     System.out.println("Correct");
@@ -29,6 +36,12 @@ public class Main {
             }
             keep = k;
             k -= k;
+
+
+
+
+
+
 
             if (flag == false) {
                 System.out.println("Try again");
@@ -113,8 +126,14 @@ public class Main {
         } catch (IOException e) {
             System.out.println("Error");
             e.printStackTrace();
-}
+        }
         
 
     }
+
+
+        
+
+
+
 }
